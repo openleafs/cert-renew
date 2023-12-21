@@ -1,10 +1,19 @@
-import subprocess
+import os
 import re
+import subprocess
 from datetime import datetime, timedelta, date
 import logging
 
-renew_path = '/path of your cert renew'
-logging.basicConfig(format='%(levelname)s - %(asctime)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S', filename=f'{renew_path}/renew.log', level=logging.DEBUG)
+
+script_path = os.path.realpath(__file__)
+renew_path = os.path.dirname(script_path)
+
+logging.basicConfig(
+	format='%(levelname)s - %(asctime)s - %(message)s',
+	datefmt='%Y-%m-%d %H:%M:%S',
+	filename=f'{renew_path}/renew.log',
+	level=logging.DEBUG
+)
 
 if __name__ == '__main__':
   try:
@@ -23,3 +32,4 @@ if __name__ == '__main__':
         logging.warning('certificate is not due')
   except Exception as e:
     logging.error(e)
+
