@@ -28,3 +28,6 @@ echo "restart nginx successfully"
 
 sudo systemctl restart xray
 echo "restart xray successfully"
+
+sudo certbot certificates > "$current_dir/info.log"
+echo "update cert successfully"
